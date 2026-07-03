@@ -503,6 +503,54 @@ Help build software that can stand alongside the best technology products in the
 
 When uncertain, prioritize long-term quality over short-term convenience.
 
+
+
+## Repository Structure
+
+Explain every folder.
+
+---
+
+## Reading Order
+
+1. MASTER_INDEX
+2. PROJECT_CONTEXT
+3. PROJECT_RULES
+...
+
+---
+
+## Architecture Principles
+
+- Modular
+- Scalable
+- API-first
+- AI-first
+
+---
+
+## Definition of Done
+
+A feature is complete only when:
+
+- Documentation updated
+- Tests written
+- Code reviewed
+- Accessible
+- Production ready
+
+---
+
+## Glossary
+
+Journey
+Stop
+Trip
+Route
+Recommendation
+Business
+AI Session
+
 ---
 
 END OF DOCUMENT
