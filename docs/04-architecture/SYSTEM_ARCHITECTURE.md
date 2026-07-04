@@ -1,555 +1,955 @@
-# SYSTEM_ARCHITECTURE.md
 
-Version: 1.0.0
-Status: Approved
-Project: Plan My Stop
-Owner: Rupesh
 
----
+Version: 1.0
 
-# 1. Purpose
+Status: Draft
 
-This document defines the complete technical architecture of Plan My Stop.
-
-Every implementation, API, database schema, AI module, frontend component, backend service, and deployment pipeline must comply with this architecture.
-
-No implementation may violate this document without formal architectural review.
+Author: Plan My Stop Team
 
 ---
 
-# 2. Architecture Principles
+# System Architecture
 
-Plan My Stop is designed for:
+## Overview
 
-• Scalability
-• Maintainability
-• Security
-• Performance
-• Extensibility
-• Global Availability
+Plan My Stop is designed as
 
-The system must support millions of users without requiring major architectural redesign.
+an AI-first,
 
----
+cloud-native,
 
-# 3. High-Level Architecture
+event-driven,
 
-                        Users
-                           │
-            ┌──────────────┴──────────────┐
-            │                             │
-      Web Application               Mobile Apps
-            │                             │
-            └──────────────┬──────────────┘
-                           │
-                     API Gateway
-                           │
-         ┌─────────────────┼─────────────────┐
-         │                 │                 │
- Authentication      Journey Engine     Business APIs
-         │                 │                 │
-         └─────────────────┼─────────────────┘
-                           │
-                    AI Intelligence Layer
-                           │
-                  External Platform APIs
-                           │
-                     MongoDB Database
+modular platform.
 
----
+The objective is to create
 
-# 4. Technology Stack
+a scalable,
 
-Frontend
+maintainable,
 
-Next.js (App Router)
+and intelligent
 
-TypeScript
+travel platform
 
-Material UI
+capable of supporting
 
-React Hook Form
+millions of users.
 
-Zod
+The architecture separates
 
-TanStack Query
-
-Backend
-
-Next.js API Routes
-
-Node.js
-
-Authentication
-
-Google OAuth
-
-NextAuth
-
-JWT
-
-Database
-
-MongoDB Atlas
-
-Mongoose
-
-Caching
-
-Redis (Future)
-
-Storage
-
-Cloudinary
-
-AWS S3 (Future)
-
-Payments
-
-Stripe
-
-Razorpay (India)
-
-Maps
-
-Google Maps Platform
-
-Mapbox (Future Evaluation)
-
-AI
-
-OpenAI
-
-Claude
-
-Gemini (Future Evaluation)
-
-Deployment
-
-Vercel
-
-Cloudflare
-
-GitHub Actions
-
-Monitoring
-
-Sentry
-
-Google Analytics
-
-PostHog
-
----
-
-# 5. Repository Structure
-
-plan-my-stop
-
-docs/
-
-assets/
-
-web/
-
-.github/
-
-README.md
-
----
-
-# 6. Frontend Structure
-
-web/
-
-src/
-
-app/
-
-components/
-
-features/
-
-hooks/
-
-services/
-
-contexts/
-
-lib/
-
-types/
-
-utils/
-
-constants/
-
-styles/
-
-theme/
-
-public/
-
----
-
-# 7. Component Architecture
-
-Components are divided into:
-
-UI Components
-
-Business Components
-
-Layout Components
-
-Shared Components
-
-Feature Components
-
-Never mix business logic inside reusable UI components.
-
----
-
-# 8. Feature Modules
-
-authentication
-
-journey
-
-business
-
-premium
-
-dashboard
-
-profile
-
-notifications
-
-settings
-
-admin
-
-Each feature owns:
-
-Components
-
-Hooks
-
-Services
-
-Types
-
-Validation
-
-Utilities
-
----
-
-# 9. State Management
-
-Local UI State
-
-React State
-
-Server State
-
-TanStack Query
-
-Authentication State
-
-NextAuth Session
-
-Global State
-
-React Context
-
-Redux will not be used unless future scaling requires it.
-
----
-
-# 10. API Architecture
-
-REST-first architecture.
-
-Future GraphQL evaluation.
-
-Every endpoint must:
-
-Validate input
-
-Authenticate user
-
-Authorize access
-
-Return consistent responses
-
-Log failures
-
-Never expose internal errors.
-
----
-
-# 11. Database Philosophy
-
-Collections should represent business entities.
-
-Avoid duplicated data.
-
-Reference where appropriate.
-
-Embed only when beneficial.
-
-Every collection requires:
-
-Indexes
-
-Created Date
-
-Updated Date
-
-Soft Delete Support
-
-Audit Information
-
----
-
-# 12. AI Layer
-
-AI is not a chatbot.
-
-AI is a decision engine.
-
-Responsibilities:
-
-Journey Planning
-
-Budget Prediction
-
-Stop Recommendations
-
-Restaurant Matching
-
-Hotel Matching
-
-Trip Optimization
-
-Future Learning
-
-Explain Recommendations
-
----
-
-# 13. Security
-
-HTTPS only
-
-OAuth Authentication
-
-JWT Validation
-
-Rate Limiting
-
-Input Validation
-
-Output Sanitization
-
-Environment Variables
-
-Role-Based Access Control
-
-Audit Logging
-
----
-
-# 14. Performance Targets
-
-Homepage
-
-< 2 seconds
-
-Journey Generation
-
-< 10 seconds
-
-Search
-
-< 500 ms
-
-Dashboard
-
-< 2 seconds
-
-Lighthouse
-
-Performance > 95
-
-Accessibility > 95
-
-SEO > 95
-
-Best Practices > 95
-
----
-
-# 15. Responsive Strategy
-
-Mobile First
-
-Tablet Optimized
-
-Desktop Enhanced
-
-Ultra-wide Supported
-
-No separate mobile website.
-
-One responsive application.
-
----
-
-# 16. Design System
-
-Single source of truth.
-
-Theme-driven.
-
-Consistent spacing.
-
-Consistent typography.
-
-Consistent color palette.
-
-Reusable design tokens.
-
----
-
-# 17. Authentication Flow
-
-Guest
+Business Logic
 
 ↓
 
-Google Login
+Presentation
 
 ↓
 
-Profile Creation
+Artificial Intelligence
 
 ↓
 
-Preferences
+Data
 
 ↓
 
-Dashboard
+Infrastructure
 
 ↓
 
-Journey Planning
+External Services
 
-Future:
+Each layer
 
-Apple Login
+has
 
-Email Login
-
-Business Login
-
-Enterprise SSO
+one responsibility.
 
 ---
 
-# 18. Deployment Pipeline
+# High Level Architecture
 
-Developer
+                    Users
 
-↓
+                      │
 
-Git Commit
+        Mobile App / Web App / PWA
 
-↓
+                      │
 
-GitHub
+               API Gateway (BFF)
 
-↓
+                      │
 
-GitHub Actions
+------------------------------------------------------
 
-↓
+ Authentication Service
 
-Vercel Preview
+ User Service
 
-↓
+ Journey Service
 
-Testing
+ Hotel Service
 
-↓
+ Restaurant Service
 
-Production
+ Maps Service
+
+ AI Service
+
+ Budget Service
+
+ Community Service
+
+ Notification Service
+
+ Search Service
+
+ Analytics Service
+
+ Payment Service
+
+ Enterprise Service
+
+------------------------------------------------------
+
+                Event Bus
+
+------------------------------------------------------
+
+ PostgreSQL
+
+ Redis
+
+ Object Storage
+
+ Vector Database
+
+ Search Engine
+
+------------------------------------------------------
+
+ External APIs
+
+ Google Maps
+
+ OpenStreetMap
+
+ Weather
+
+ Hotels
+
+ Restaurants
+
+ Payments
+
+ AI Providers
+
+ Notifications
+
+------------------------------------------------------
+
+ Monitoring
+
+ Logging
+
+ Metrics
+
+ Backups
+
+ CI/CD
+
+ Cloud Infrastructure
 
 ---
 
-# 19. Monitoring
+# Architectural Goals
 
-Frontend Errors
+The platform must be
 
-API Errors
+Highly Available
 
-Performance Metrics
+↓
 
-User Analytics
+Horizontally Scalable
 
-Business Analytics
+↓
 
-Crash Reporting
+Cloud Native
 
-AI Usage Metrics
+↓
 
----
+AI Ready
 
-# 20. Future Expansion
+↓
 
-Native iOS
+Offline Friendly
 
-Native Android
+↓
 
-Wearables
+API First
 
-Android Auto
-
-Apple CarPlay
-
-Enterprise Dashboard
-
-Partner APIs
-
-Public API Platform
-
-Global Marketplace
-
----
-
-# 21. Engineering Philosophy
-
-Every line of code must be:
-
-Readable
-
-Reusable
+↓
 
 Secure
 
-Documented
+↓
 
-Tested
+Observable
 
-Scalable
+↓
+
+Fault Tolerant
+
+↓
 
 Maintainable
 
-If a solution is difficult to understand, it should be redesigned.
+---
+
+# Architecture Principles
+
+## Principle 1
+
+Everything
+
+is a service.
 
 ---
 
-END OF DOCUMENT
+## Principle 2
+
+Services communicate
+
+using APIs
+
+or Events.
+
+Never
+
+through database access.
+
+---
+
+## Principle 3
+
+Every service
+
+owns
+
+its own data.
+
+---
+
+## Principle 4
+
+Frontend
+
+never knows
+
+database details.
+
+---
+
+## Principle 5
+
+Artificial Intelligence
+
+never talks
+
+directly
+
+to databases.
+
+AI always
+
+uses Services.
+
+---
+
+## Principle 6
+
+Every service
+
+can be deployed
+
+independently.
+
+---
+
+## Principle 7
+
+Every feature
+
+must expose
+
+public APIs.
+
+---
+
+# Client Layer
+
+The Client Layer contains
+
+Web Application
+
+↓
+
+Android
+
+↓
+
+iOS
+
+↓
+
+PWA
+
+↓
+
+Future Desktop
+
+↓
+
+Future Vehicle Display
+
+↓
+
+Future Smart Watch
+
+Every client
+
+uses
+
+the same APIs.
+
+---
+
+# Backend Layer
+
+Backend contains
+
+Authentication
+
+↓
+
+Journey
+
+↓
+
+Hotel
+
+↓
+
+Restaurant
+
+↓
+
+Maps
+
+↓
+
+AI
+
+↓
+
+Budget
+
+↓
+
+Community
+
+↓
+
+Enterprise
+
+↓
+
+Notifications
+
+↓
+
+Search
+
+↓
+
+Analytics
+
+↓
+
+Media
+
+↓
+
+Payments
+
+Each backend
+
+is independently deployable.
+
+---
+
+# Data Layer
+
+Persistent Storage
+
+PostgreSQL
+
+↓
+
+Redis
+
+↓
+
+S3 Storage
+
+↓
+
+Vector Database
+
+↓
+
+Search Index
+
+↓
+
+Analytics Warehouse
+
+No service
+
+shares
+
+its database.
+
+---
+
+# AI Layer
+
+The AI Layer
+
+is an orchestration layer.
+
+It consumes
+
+context
+
+from
+
+multiple services.
+
+It produces
+
+Recommendations
+
+↓
+
+Predictions
+
+↓
+
+Summaries
+
+↓
+
+Optimization
+
+↓
+
+Planning
+
+↓
+
+Decision Support
+
+The AI Layer
+
+does not own
+
+business data.
+
+---
+
+# External Integrations
+
+Google Maps
+
+↓
+
+Mapbox
+
+↓
+
+OpenStreetMap
+
+↓
+
+OpenWeather
+
+↓
+
+Hotel APIs
+
+↓
+
+Restaurant APIs
+
+↓
+
+Payment Gateways
+
+↓
+
+Email
+
+↓
+
+SMS
+
+↓
+
+Push Notifications
+
+↓
+
+Calendar
+
+↓
+
+Translation
+
+↓
+
+AI Providers
+
+Every integration
+
+passes
+
+through
+
+Integration Services.
+
+---
+
+# Security Layer
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+JWT
+
+↓
+
+OAuth
+
+↓
+
+Passkeys
+
+↓
+
+Encryption
+
+↓
+
+Secrets
+
+↓
+
+Audit Logs
+
+↓
+
+Rate Limiting
+
+↓
+
+WAF
+
+↓
+
+Bot Protection
+
+↓
+
+Fraud Detection
+
+Security
+
+is implemented
+
+across
+
+every layer.
+
+---
+
+# Caching
+
+Redis caches
+
+Popular Hotels
+
+↓
+
+Popular Restaurants
+
+↓
+
+AI Responses
+
+↓
+
+Maps
+
+↓
+
+Weather
+
+↓
+
+Search Results
+
+↓
+
+Journey Data
+
+↓
+
+User Sessions
+
+↓
+
+Configuration
+
+Cache
+
+must never
+
+be the
+
+source of truth.
+
+---
+
+# Search Layer
+
+Search indexes
+
+Hotels
+
+↓
+
+Restaurants
+
+↓
+
+Trips
+
+↓
+
+Destinations
+
+↓
+
+Journal
+
+↓
+
+Photos
+
+↓
+
+Documents
+
+↓
+
+Community
+
+↓
+
+Travel Guides
+
+↓
+
+Events
+
+↓
+
+AI Knowledge
+
+Search
+
+is universal.
+
+---
+
+# Event Layer
+
+Events power
+
+the platform.
+
+Examples
+
+Journey Created
+
+↓
+
+Hotel Selected
+
+↓
+
+Restaurant Selected
+
+↓
+
+Expense Added
+
+↓
+
+Trip Started
+
+↓
+
+Trip Completed
+
+↓
+
+Photo Uploaded
+
+↓
+
+AI Recommendation Accepted
+
+↓
+
+Premium Purchased
+
+↓
+
+Notification Sent
+
+Every important action
+
+creates
+
+an event.
+
+---
+
+# Monitoring
+
+Monitor
+
+API Latency
+
+↓
+
+Errors
+
+↓
+
+AI Usage
+
+↓
+
+Payments
+
+↓
+
+Maps
+
+↓
+
+Database
+
+↓
+
+Memory
+
+↓
+
+CPU
+
+↓
+
+Cache
+
+↓
+
+Queue
+
+↓
+
+Notifications
+
+↓
+
+User Sessions
+
+↓
+
+Search
+
+↓
+
+Availability
+
+Observability
+
+is mandatory.
+
+---
+
+# Deployment
+
+Every service
+
+runs
+
+inside
+
+Docker Containers.
+
+↓
+
+Kubernetes
+
+↓
+
+Cloud Load Balancer
+
+↓
+
+Auto Scaling
+
+↓
+
+CDN
+
+↓
+
+Cloud Storage
+
+↓
+
+Managed Database
+
+↓
+
+Monitoring
+
+↓
+
+Backups
+
+The system
+
+must scale
+
+without downtime.
+
+---
+
+# Disaster Recovery
+
+Automatic Backups
+
+↓
+
+Point In Time Recovery
+
+↓
+
+Multi Region Storage
+
+↓
+
+Database Replication
+
+↓
+
+Failover
+
+↓
+
+Health Checks
+
+↓
+
+Monitoring Alerts
+
+↓
+
+Recovery Automation
+
+Target
+
+99.9%
+
+availability
+
+for MVP.
+
+99.99%
+
+after scale.
+
+---
+
+# Architecture Summary
+
+Plan My Stop
+
+uses
+
+a modular,
+
+event-driven,
+
+AI-first architecture
+
+where
+
+every service
+
+owns
+
+its responsibility.
+
+Artificial Intelligence
+
+acts
+
+as
+
+the intelligence layer,
+
+not
+
+the business layer.
+
+This architecture
+
+supports
+
+rapid development,
+
+high scalability,
+
+future integrations,
+
+and long-term maintainability.
+
+Status
+
+Version 1.0
+
+Ready for Database Architecture.

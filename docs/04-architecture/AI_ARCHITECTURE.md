@@ -1,418 +1,1258 @@
----
-title: AI Architecture
-version: 1.0.0
-status: Active
-owner: Plan My Stop
-category: AI
-last_updated: 2026-07-03
+
+
+Version: 1.0
+
+Status: Draft
+
+Location:
+docs/04-architecture/AI_ARCHITECTURE.md
+
 ---
 
 # AI Architecture
 
-> The AI Architecture defines how Artificial Intelligence is integrated into Plan My Stop. It establishes the responsibilities, boundaries, workflows, and governance for all AI-powered capabilities across the platform.
+## Overview
+
+Plan My Stop is
+
+an AI-first platform.
+
+Artificial Intelligence
+
+is not
+
+a feature.
+
+It is
+
+the Intelligence Layer
+
+that enhances
+
+every product module.
+
+Unlike traditional applications
+
+where users
+
+open
+
+an AI chatbot,
+
+Plan My Stop
+
+embeds intelligence
+
+throughout
+
+the user journey.
+
+Artificial Intelligence
+
+should feel
+
+invisible,
+
+helpful,
+
+predictable,
+
+and trustworthy.
 
 ---
 
-# Purpose
+# AI Mission
 
-Artificial Intelligence is a core capability of Plan My Stop.
+Help travelers
 
-Its purpose is to enhance user decision-making through intelligent recommendations, natural language interactions, personalization, and contextual reasoning.
+make
 
-AI is an assistant to the user, not a replacement for deterministic application logic.
+better decisions.
 
----
+Not
 
-# Objectives
+more decisions.
 
-The AI platform should:
+Artificial Intelligence
 
-- Understand user intent.
-- Generate intelligent travel recommendations.
-- Personalize journeys.
-- Explain recommendations.
-- Learn user preferences.
-- Improve user experience.
-- Reduce planning effort.
-- Support conversational interactions.
+reduces
 
----
+planning,
 
-# AI Design Principles
+stress,
 
-## AI Assists
+uncertainty,
 
-AI provides recommendations.
+cost,
 
-The user always remains in control.
+and confusion.
 
 ---
 
-## Context First
+# AI Core Responsibilities
 
-AI should never respond without sufficient context.
+Artificial Intelligence
 
-Context improves accuracy.
-
----
-
-## Deterministic Before AI
-
-Business logic always executes first.
-
-Examples:
-
-- Distance calculation
-- Route calculation
-- Authentication
-- Pricing
-- Booking validation
-
-AI enhances these results.
-
----
-
-## Explainable AI
-
-Whenever possible AI should explain why a recommendation was made.
-
-Example:
-
-> This restaurant was selected because it matches your vegetarian preference, has excellent reviews, and fits your planned lunch time.
-
----
-
-## Privacy First
-
-AI should never expose sensitive user information.
-
-All prompts must contain only the minimum required context.
-
----
-
-# AI Responsibilities
-
-The AI system is responsible for:
-
-- Natural language understanding
-- Trip planning assistance
-- Recommendation explanations
-- Itinerary refinement
-- Personalization
-- Travel suggestions
-- Hidden gem discovery
-- Travel summaries
-- Preference extraction
-- Follow-up recommendations
-
-The AI system is NOT responsible for:
-
-- Authentication
-- Payment processing
-- Business validation
-- Route calculation
-- Database updates without approval
-
----
-
-# AI Components
-
-The AI platform consists of the following logical components.
-
-```text
-User
- │
- ▼
-Context Engine
- │
- ▼
-Prompt Builder
- │
- ▼
-Model Router
- │
- ▼
-LLM
- │
- ▼
-Response Validator
- │
- ▼
-Business Rules
- │
- ▼
-Application
-```
-
----
-
-# AI Workflow
-
-## Step 1
-
-Receive user request.
-
-Example
-
-"I am travelling from Bangalore to Goa."
-
----
-
-## Step 2
-
-Collect context.
-
-Examples
-
-- User profile
-- Journey
-- Weather
-- Time
-- Previous trips
-- Preferences
-- Budget
-
----
-
-## Step 3
-
-Build prompt.
-
-The prompt contains only relevant information.
-
----
-
-## Step 4
-
-Select model.
-
-Model Router decides which model is most suitable.
-
----
-
-## Step 5
-
-Generate AI response.
-
----
-
-## Step 6
-
-Validate response.
-
-Validation checks include:
-
-- Safety
-- Completeness
-- Business rules
-- Formatting
-
----
-
-## Step 7
-
-Return structured response.
-
----
-
-# AI Services
-
-The AI platform consists of multiple services.
-
-## Context Engine
-
-Collects all relevant information.
-
----
-
-## Prompt Builder
-
-Creates optimized prompts.
-
----
-
-## Model Router
-
-Selects the most appropriate AI model.
-
----
-
-## Response Validator
-
-Checks AI quality.
-
----
-
-## Personalization Engine
-
-Applies user preferences.
-
----
-
-## Recommendation Engine
-
-Generates location recommendations.
-
----
-
-## Memory System
-
-Stores long-term preferences.
-
----
-
-# Context Sources
-
-The Context Engine may retrieve information from:
-
-- User Profile
-- Journey
-- Search History
-- Saved Places
-- Current Session
-- Weather
-- Traffic
-- Time
-- Location
-- Business Database
-- Reviews
-
----
-
-# Prompt Engineering Principles
-
-Prompts should:
-
-- Be structured.
-- Be deterministic.
-- Include only required context.
-- Avoid ambiguity.
-- Minimize token usage.
-- Produce structured output.
-
----
-
-# Model Routing
-
-Different models may be used for different tasks.
-
-Examples
-
-Conversation
-
-Recommendation
-
-Summarization
-
-Translation
+provides
 
 Planning
 
-Reasoning
+↓
 
-Image Generation
+Recommendations
 
-The Model Router selects the most appropriate model.
+↓
+
+Optimization
+
+↓
+
+Prediction
+
+↓
+
+Summaries
+
+↓
+
+Classification
+
+↓
+
+Translation
+
+↓
+
+Conversation
+
+↓
+
+Memory
+
+↓
+
+Personalization
+
+↓
+
+Safety Assistance
+
+↓
+
+Travel Intelligence
+
+AI never
+
+owns
+
+business logic.
 
 ---
 
-# Personalization
+# AI Principles
 
-AI should personalize recommendations using:
+AI must always be
 
-- Cuisine
-- Budget
-- Accessibility
-- Vehicle Type
-- Family Size
-- Travel Style
-- Interests
-- Previous Trips
+Transparent
+
+↓
+
+Explainable
+
+↓
+
+Context Aware
+
+↓
+
+Privacy First
+
+↓
+
+Editable
+
+↓
+
+Human Controlled
+
+↓
+
+Observable
+
+↓
+
+Reliable
+
+↓
+
+Fast
+
+↓
+
+Safe
+
+---
+
+# High-Level AI Architecture
+
+                User
+
+                  │
+
+                  ▼
+
+        AI Gateway Service
+
+                  │
+
+                  ▼
+
+         Context Builder
+
+                  │
+
+      ┌───────────┴───────────┐
+
+      ▼                       ▼
+
+ Internal Services      External Sources
+
+      ▼                       ▼
+
+ Journey                Weather
+
+ Hotels                 Maps
+
+ Restaurants            Traffic
+
+ Budget                 Events
+
+ Memories               Search
+
+ Preferences            AI Provider
+
+                  ▼
+
+          Prompt Builder
+
+                  ▼
+
+          AI Provider Layer
+
+      OpenAI
+
+      Anthropic
+
+      Gemini
+
+      Future Models
+
+                  ▼
+
+         Response Validator
+
+                  ▼
+
+        Recommendation Engine
+
+                  ▼
+
+             User
+
+---
+
+# AI Layers
+
+Layer 1
+
+AI Gateway
+
+↓
+
+Layer 2
+
+Context Builder
+
+↓
+
+Layer 3
+
+Prompt Builder
+
+↓
+
+Layer 4
+
+LLM Provider
+
+↓
+
+Layer 5
+
+Validation
+
+↓
+
+Layer 6
+
+Decision Engine
+
+↓
+
+Layer 7
+
+Learning Engine
+
+Each layer
+
+has
+
+one responsibility.
+
+---
+
+# AI Gateway
+
+The Gateway
+
+receives
+
+all AI requests.
+
+Responsibilities
+
+Authentication
+
+↓
+
+Authorization
+
+↓
+
+Rate Limiting
+
+↓
+
+Logging
+
+↓
+
+Caching
+
+↓
+
+Request Validation
+
+↓
+
+Provider Selection
+
+↓
+
+Metrics
+
+↓
+
+Tracing
+
+↓
+
+Security
+
+Gateway
+
+contains
+
+no prompt logic.
+
+---
+
+# Context Builder
+
+The Context Builder
+
+collects
+
+all required information.
+
+Sources
+
+User Profile
+
+↓
+
+Journey
+
+↓
+
+Hotels
+
+↓
+
+Restaurants
+
+↓
+
+Weather
+
+↓
+
+Traffic
+
+↓
+
+Maps
+
+↓
+
+Calendar
+
+↓
+
+Budget
+
+↓
+
+Expenses
+
+↓
+
+Favorites
+
+↓
+
+Travel History
+
+↓
+
+AI Memory
+
+↓
+
+Community
+
+↓
+
+Enterprise
+
+Only
+
+required context
+
+is collected.
+
+Never
+
+the whole database.
+
+---
+
+# Prompt Builder
+
+The Prompt Builder
+
+converts
+
+business context
+
+into
+
+AI prompts.
+
+Inputs
+
+Structured Data
+
+↓
+
+Rules
+
+↓
+
+User Intent
+
+↓
+
+Context
+
+↓
+
+Preferences
+
+↓
+
+Safety Policies
+
+↓
+
+System Prompts
+
+↓
+
+Feature Prompts
+
+↓
+
+Response Format
+
+Every prompt
+
+is versioned.
+
+---
+
+# AI Provider Layer
+
+Supported Providers
+
+OpenAI
+
+↓
+
+Anthropic
+
+↓
+
+Gemini
+
+↓
+
+Local Models
+
+↓
+
+Future Providers
+
+Provider selection
+
+depends on
+
+Cost
+
+↓
+
+Latency
+
+↓
+
+Quality
+
+↓
+
+Availability
+
+↓
+
+Task
+
+The application
+
+is never
+
+locked
+
+to one provider.
+
+---
+
+# AI Tasks
+
+Trip Planning
+
+↓
+
+Hotel Recommendation
+
+↓
+
+Restaurant Recommendation
+
+↓
+
+Budget Advice
+
+↓
+
+Route Optimization
+
+↓
+
+Travel Story
+
+↓
+
+Travel Summary
+
+↓
+
+Translation
+
+↓
+
+Safety Guidance
+
+↓
+
+Expense Analysis
+
+↓
+
+Recommendation Explanation
+
+↓
+
+Conversation
+
+↓
+
+Search Assistance
+
+Each task
+
+uses
+
+its own prompt
+
+and workflow.
+
+---
+
+# Recommendation Engine
+
+The Recommendation Engine
+
+combines
+
+AI output
+
+with
+
+business rules.
+
+Example
+
+AI suggests
+
+Hotel A
+
+↓
+
+Business Rules
+
+↓
+
+Availability
+
+↓
+
+Budget
+
+↓
+
+Safety
+
+↓
+
+Distance
+
+↓
+
+Enterprise Policy
+
+↓
+
+User Preferences
+
+↓
+
+Final Recommendation
+
+Business Rules
+
+always override
+
+AI output.
+
+---
+
+# Response Validator
+
+Every AI response
+
+passes
+
+validation.
+
+Checks
+
+JSON Format
+
+↓
+
+Required Fields
+
+↓
+
+Content Safety
+
+↓
+
+Policy Compliance
+
+↓
+
+Length
+
+↓
+
+Confidence
+
+↓
+
+Hallucination Detection
+
+↓
+
+Business Rules
+
+↓
+
+Link Validation
+
+↓
+
+Language
+
+↓
+
+Formatting
+
+Invalid responses
+
+never reach
+
+users.
 
 ---
 
 # AI Memory
 
-Memory is divided into:
+Artificial Intelligence
 
-## Short-Term
+stores
 
-Current conversation.
+long-term memory
 
-Current journey.
+only
 
-Current search.
+with permission.
 
----
+Memory includes
 
-## Long-Term
+Favorite Cuisine
 
-Saved preferences.
+↓
 
-Favourite places.
+Preferred Hotels
 
-Travel habits.
+↓
 
-Preferred cuisines.
+Travel Style
 
-Frequently visited locations.
+↓
 
----
+Budget
 
-# AI Safety
+↓
 
-The AI system must:
+Accessibility
 
-- Prevent hallucinations.
-- Avoid unsupported claims.
-- Respect privacy.
-- Reject malicious prompts.
-- Protect sensitive data.
-- Follow business rules.
+↓
 
----
+Languages
 
-# AI Limitations
+↓
 
-The AI must never:
+Driving Style
 
-- Invent business information.
-- Modify user data without permission.
-- Recommend unsafe routes knowingly.
-- Override application security.
+↓
 
----
+Favorite Destinations
 
-# Future Enhancements
+↓
 
-Future AI capabilities include:
+Travel Frequency
 
-- Voice conversations
-- Multi-modal planning
-- Image understanding
-- Offline AI assistance
-- Predictive journeys
-- Travel habit learning
-- Smart itinerary optimization
-- AI travel companion
+↓
+
+Family Information
+
+Memory
+
+is editable
+
+and removable.
 
 ---
 
-# Related Documents
+# Learning Engine
 
-- JOURNEY_ENGINE.md
-- CONTEXT_ENGINE.md
-- PROMPT_ENGINEERING.md
-- MEMORY_SYSTEM.md
-- MODEL_ROUTING.md
-- TOOL_CALLING.md
-- AI_EVALUATION.md
+The Learning Engine
+
+records
+
+Recommendation
+
+↓
+
+User Decision
+
+↓
+
+Feedback
+
+↓
+
+Journey Outcome
+
+↓
+
+Acceptance Rate
+
+↓
+
+Ignored Suggestions
+
+↓
+
+Ratings
+
+↓
+
+Corrections
+
+↓
+
+Trip Completion
+
+Learning
+
+improves
+
+future recommendations.
 
 ---
 
-# Revision History
+# AI Search
 
-| Version | Date | Description |
-|----------|------------|------------------------------|
-| 1.0.0 | 2026-07-03 | Initial AI Architecture |
-```
+AI Search
+
+combines
+
+Keyword Search
+
+↓
+
+Semantic Search
+
+↓
+
+Embeddings
+
+↓
+
+Vector Search
+
+↓
+
+Travel Context
+
+↓
+
+Filters
+
+↓
+
+Ranking
+
+↓
+
+Recommendations
+
+Search
+
+returns
+
+explanations,
+
+not
+
+only results.
+
+---
+
+# AI Cache
+
+Frequently generated
+
+responses
+
+are cached.
+
+Examples
+
+Popular Destinations
+
+↓
+
+Weather Advice
+
+↓
+
+Travel Tips
+
+↓
+
+Local Guides
+
+↓
+
+Packing Lists
+
+↓
+
+FAQ
+
+↓
+
+Static Recommendations
+
+Personal responses
+
+are never
+
+shared.
+
+---
+
+# AI Security
+
+Every request
+
+passes through
+
+Prompt Injection Detection
+
+↓
+
+Content Moderation
+
+↓
+
+Rate Limiting
+
+↓
+
+PII Detection
+
+↓
+
+Output Validation
+
+↓
+
+Audit Logging
+
+↓
+
+Permission Checks
+
+↓
+
+Context Filtering
+
+↓
+
+Provider Monitoring
+
+AI security
+
+is mandatory.
+
+---
+
+# AI Observability
+
+Every AI request
+
+records
+
+Model
+
+↓
+
+Latency
+
+↓
+
+Cost
+
+↓
+
+Tokens
+
+↓
+
+Cache Hit
+
+↓
+
+Errors
+
+↓
+
+Feedback
+
+↓
+
+Success Rate
+
+↓
+
+Confidence
+
+↓
+
+User Satisfaction
+
+Supports
+
+continuous optimization.
+
+---
+
+# AI Performance Targets
+
+Trip Planning
+
+<5 Seconds
+
+↓
+
+Hotel Recommendation
+
+<2 Seconds
+
+↓
+
+Restaurant Recommendation
+
+<2 Seconds
+
+↓
+
+Budget Advice
+
+<2 Seconds
+
+↓
+
+Travel Summary
+
+<4 Seconds
+
+↓
+
+Translation
+
+<2 Seconds
+
+↓
+
+AI Search
+
+<3 Seconds
+
+Performance
+
+must remain
+
+predictable.
+
+---
+
+# AI Failure Strategy
+
+If AI fails
+
+Fallback
+
+to
+
+Business Rules
+
+↓
+
+Cached Results
+
+↓
+
+Traditional Search
+
+↓
+
+Retry
+
+↓
+
+Alternative Provider
+
+↓
+
+User Notification
+
+The application
+
+must continue
+
+working
+
+without AI.
+
+---
+
+# AI Cost Optimization
+
+Strategies
+
+Prompt Optimization
+
+↓
+
+Caching
+
+↓
+
+Model Routing
+
+↓
+
+Context Reduction
+
+↓
+
+Batch Requests
+
+↓
+
+Streaming
+
+↓
+
+Embedding Reuse
+
+↓
+
+Token Monitoring
+
+↓
+
+Response Compression
+
+AI should scale
+
+without
+
+uncontrolled costs.
+
+---
+
+# AI Ethics
+
+Artificial Intelligence
+
+must never
+
+Invent bookings
+
+↓
+
+Invent prices
+
+↓
+
+Invent availability
+
+↓
+
+Manipulate users
+
+↓
+
+Hide uncertainty
+
+↓
+
+Ignore safety
+
+↓
+
+Store data
+
+without consent
+
+↓
+
+Recommend unsafe actions
+
+Trust
+
+is more important
+
+than intelligence.
+
+---
+
+# AI Summary
+
+Artificial Intelligence
+
+is
+
+the intelligence layer
+
+of Plan My Stop.
+
+It combines
+
+context,
+
+reasoning,
+
+prediction,
+
+memory,
+
+and explanation
+
+to help users
+
+make better travel decisions.
+
+AI remains
+
+modular,
+
+provider-independent,
+
+secure,
+
+observable,
+
+and explainable.
+
+Status
+
+Version 1.0
+
+Ready for Frontend Architecture.

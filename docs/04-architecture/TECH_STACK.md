@@ -1,625 +1,1041 @@
-# TECH_STACK.md
 
-Version: 1.0.0
-Status: Approved
-Project: Plan My Stop
-Owner: Rupesh
 
----
+Version: 1.0
 
-# Purpose
+Status: Final
 
-This document defines the official technology stack for Plan My Stop.
-
-It serves as the technical reference for all current and future engineering decisions.
-
-Every technology selected for this project must satisfy the following objectives:
-
-- Production readiness
-- Scalability
-- Maintainability
-- Security
-- Performance
-- Developer productivity
-- Long-term ecosystem support
-
-No technology should be introduced without a clear purpose and documented justification.
+Location:
+docs/04-architecture/TECH_STACK.md
 
 ---
 
-# Technology Selection Principles
+# Technology Stack
 
-Before adopting any technology, it must satisfy the following criteria.
+## Overview
 
-## Production Proven
+Plan My Stop
 
-The technology should have widespread production usage.
+uses
 
----
+a modern,
 
-## Active Community
+AI-first,
 
-Large community.
+cloud-native,
 
-Regular maintenance.
+open-source-first
 
-Long-term support.
+technology stack.
 
-Excellent documentation.
+Every technology
 
----
+has been selected
 
-## Scalability
+based on
 
-Must support millions of users without requiring fundamental redesign.
+Performance
 
----
+↓
 
-## Maintainability
+Scalability
 
-Readable.
+↓
 
-Well documented.
+Developer Experience
 
-Easy to upgrade.
+↓
 
-Stable API.
+Community
 
----
+↓
 
-## Developer Experience
+Long-Term Support
 
-Simple tooling.
+↓
 
-Excellent debugging.
+Cost
 
-Strong IDE support.
+↓
 
-Fast development cycle.
+Maintainability
 
----
+↓
 
-## Performance
+AI Compatibility
 
-Fast execution.
+↓
 
-Low latency.
-
-Efficient rendering.
-
-Optimized bundle size.
+Enterprise Readiness
 
 ---
 
-## Security
+# Architecture Summary
 
-Regular security updates.
+Frontend
 
-Strong ecosystem.
+↓
 
-Minimal vulnerabilities.
+Next.js
 
----
+Backend
 
-# High Level Architecture
+↓
 
-```
-Client
-        │
-        ▼
-Next.js Frontend
-        │
-        ▼
-API Layer
-        │
-        ▼
-Business Services
-        │
-        ▼
-MongoDB Atlas
-```
+NestJS
 
-Future integrations
+Database
 
-```
-Google OAuth
+↓
 
-Google Maps
+PostgreSQL
+
+Cache
+
+↓
+
+Redis
+
+Search
+
+↓
+
+Meilisearch
+
+Vector Database
+
+↓
+
+Qdrant
+
+Object Storage
+
+↓
+
+MinIO
+
+Deployment
+
+↓
+
+Docker
+
+AI
+
+↓
 
 OpenAI
 
-Stripe
+↓
 
-Cloudinary
+Gemini
 
-Analytics
+↓
 
-Notifications
+Anthropic
+
+Maps
+
+↓
+
+Mapbox
+
+↓
+
+Google Maps
 
 Monitoring
-```
+
+↓
+
+Grafana Stack
 
 ---
 
 # Frontend
 
-## Framework
+Framework
 
 Next.js
 
-Status
-
-Approved
-
-Purpose
-
-Primary frontend framework.
-
 Reason
 
-Server-side rendering.
+SSR
 
-App Router.
+↓
 
-SEO.
+SEO
 
-Performance.
+↓
 
-Excellent React ecosystem.
+PWA
 
-Enterprise adoption.
+↓
 
-Alternatives Considered
+Excellent React Support
 
-React SPA
+↓
 
-Remix
+Fast
 
-Angular
+↓
 
-Vue
+Huge Community
 
-Decision
+↓
 
-Next.js provides the strongest balance between performance, scalability, and developer experience.
+App Router
+
+↓
+
+Server Components
 
 ---
 
-## Language
+# Programming Language
 
 TypeScript
 
-Status
-
-Approved
-
-Purpose
-
-Primary programming language.
-
 Reason
 
-Static typing.
+Type Safety
 
-Better tooling.
+↓
 
-Safer refactoring.
+Developer Productivity
 
-Higher code quality.
+↓
 
-Decision
+Large Ecosystem
 
-All application code should use TypeScript.
+↓
 
-JavaScript should not be introduced unless there is a compelling technical reason.
+Excellent AI Coding Support
+
+↓
+
+Shared Types
+
+↓
+
+Maintainability
 
 ---
 
-## UI Library
+# UI Library
 
 React
 
-Purpose
+Reason
 
-Component architecture.
+Largest Ecosystem
+
+↓
+
+Component Based
+
+↓
+
+Future Proof
+
+↓
+
+Excellent Community
+
+↓
+
+Reusable Components
+
+---
+
+# Styling
+
+Tailwind CSS
 
 Reason
 
-Industry standard.
+Fast Development
 
-Large ecosystem.
+↓
 
-Reusable components.
+Small Bundle
 
-Excellent tooling.
+↓
+
+Excellent Design System
+
+↓
+
+Easy Theme Support
+
+↓
+
+Responsive Design
+
+↓
+
+Dark Mode
 
 ---
 
-## Component Library
+# Component Library
 
-Material UI
-
-Purpose
-
-Foundation UI components.
+shadcn/ui
 
 Reason
 
-Accessibility.
+Not Locked
 
-Reliable components.
+↓
 
-Fast development.
+Beautiful Components
 
-Strong documentation.
+↓
 
-Decision
+Accessible
 
-Material UI serves as the engineering foundation.
+↓
 
-The visual identity is defined by the custom Plan My Stop Design System.
+Highly Customizable
 
-Material UI should never dictate branding.
+↓
 
----
+No Vendor Lock-In
 
-## Styling Strategy
+↓
 
-Primary
-
-Material UI Theme System
-
-Secondary
-
-CSS Modules
-
-Future
-
-Evaluate CSS Variables for advanced theming.
-
-Avoid
-
-Large global stylesheets.
-
-Inline styling.
-
-Unstructured CSS.
+Premium Appearance
 
 ---
 
-## Icons
+# Icons
 
-Current
+Lucide
 
-Material Icons
+Reason
 
-Future
+Modern
 
-Custom icon set for branding.
+↓
+
+Consistent
+
+↓
+
+Open Source
+
+↓
+
+Tree Shakeable
+
+↓
+
+Excellent Quality
 
 ---
 
-## Animations
-
-Future Library
+# Animation
 
 Framer Motion
 
-Purpose
-
-Premium transitions.
-
-Meaningful animations.
-
-Smooth interactions.
-
-Rules
-
-Animations must improve usability.
-
-Avoid decorative motion.
-
----
-
-# Backend
-
-Current Strategy
-
-Next.js API Routes
-
-Purpose
-
-Authentication.
-
-Business logic.
-
-Internal APIs.
-
-Future
-
-Dedicated backend services may be introduced when scaling requires separation.
-
----
-
-# Database
-
-Primary
-
-MongoDB Atlas
-
-Purpose
-
-Application database.
-
 Reason
 
-Flexible schema.
+Smooth
 
-Cloud-native.
+↓
 
-Global availability.
+Native Feel
 
-Excellent scalability.
+↓
 
-Future
+Gesture Support
 
-Sharding.
+↓
 
-Caching.
+Layout Animations
 
-Read replicas.
+↓
 
----
-
-# Authentication
-
-Primary
-
-Google OAuth
-
-Reason
-
-Simple onboarding.
-
-Trusted authentication.
-
-Reduced password management.
-
-Future
-
-Apple Sign-In.
-
-Microsoft.
-
-Email authentication.
-
-Enterprise SSO.
+Premium UX
 
 ---
 
 # Maps
 
-Preferred
+Primary
 
-Google Maps Platform
+Mapbox
 
-Purpose
+Secondary
 
-Location search.
+Google Maps
 
-Routing.
+Future
 
-Nearby places.
-
-Travel intelligence.
+OpenStreetMap
 
 Reason
 
-Industry-leading mapping platform.
+Beautiful Maps
 
-Future
+↓
 
-Evaluate Mapbox for specific use cases if required.
+Fast
 
----
+↓
 
-# Artificial Intelligence
+Offline Support
 
-Current Direction
+↓
 
-OpenAI
+Navigation
 
-Purpose
+↓
 
-Journey recommendations.
-
-Travel assistant.
-
-Planning intelligence.
-
-Content generation.
-
-Summaries.
-
-Future
-
-Model abstraction layer.
-
-Support multiple providers.
-
-OpenAI
-
-Anthropic
-
-Google
-
-Open-source models
-
-The application should never become tightly coupled to one AI provider.
+Customization
 
 ---
 
-# Storage
+# Backend
 
-Future
+Framework
 
-Cloudinary
-
-Purpose
-
-Images.
-
-Business uploads.
-
-User profile images.
-
-Media optimization.
-
----
-
-# Payments
-
-Future
-
-Stripe
-
-Purpose
-
-Premium subscriptions.
-
-Business payments.
-
-Marketplace transactions.
+NestJS
 
 Reason
 
-Excellent API.
+Enterprise Ready
 
-Global support.
+↓
 
-Developer experience.
+TypeScript
+
+↓
+
+Dependency Injection
+
+↓
+
+Modular
+
+↓
+
+Easy Testing
+
+↓
+
+Scalable
+
+↓
+
+Large Community
+
+---
+
+# Database
+
+PostgreSQL
+
+Reason
+
+Reliable
+
+↓
+
+ACID
+
+↓
+
+JSON
+
+↓
+
+GIS
+
+↓
+
+Performance
+
+↓
+
+Open Source
+
+↓
+
+Excellent Tooling
+
+---
+
+# ORM
+
+Prisma
+
+Reason
+
+Migration System
+
+↓
+
+Type Safety
+
+↓
+
+Excellent Developer Experience
+
+↓
+
+Auto Generated Types
+
+↓
+
+Large Community
+
+---
+
+# Cache
+
+Redis
+
+Reason
+
+Fast
+
+↓
+
+Session Storage
+
+↓
+
+Caching
+
+↓
+
+Queues
+
+↓
+
+Rate Limiting
+
+↓
+
+Distributed Locks
+
+---
+
+# Search Engine
+
+Meilisearch
+
+Reason
+
+Simple
+
+↓
+
+Fast
+
+↓
+
+Typo Tolerance
+
+↓
+
+Easy Integration
+
+↓
+
+Open Source
+
+↓
+
+Excellent UX
+
+---
+
+# Vector Database
+
+Qdrant
+
+Reason
+
+Semantic Search
+
+↓
+
+Embeddings
+
+↓
+
+Recommendation Engine
+
+↓
+
+AI Memory
+
+↓
+
+Open Source
+
+↓
+
+Fast
+
+---
+
+# Object Storage
+
+MinIO
+
+Reason
+
+S3 Compatible
+
+↓
+
+Open Source
+
+↓
+
+Self Hosted
+
+↓
+
+Scalable
+
+↓
+
+Low Cost
+
+---
+
+# Authentication
+
+Better Auth (formerly BetterAuth)
+
+Alternative
+
+Auth.js
+
+Reason
+
+Modern
+
+↓
+
+Passkeys
+
+↓
+
+OAuth
+
+↓
+
+Session Management
+
+↓
+
+TypeScript
+
+↓
+
+Self Hosted Friendly
+
+---
+
+# Validation
+
+Zod
+
+Reason
+
+Shared Validation
+
+↓
+
+Type Safety
+
+↓
+
+Frontend + Backend
+
+↓
+
+Excellent DX
+
+---
+
+# API Documentation
+
+OpenAPI
+
+Swagger
+
+Reason
+
+Industry Standard
+
+↓
+
+Automatic Documentation
+
+↓
+
+SDK Generation
+
+↓
+
+Testing
+
+---
+
+# Background Jobs
+
+BullMQ
+
+Reason
+
+Redis Based
+
+↓
+
+Reliable
+
+↓
+
+Scheduling
+
+↓
+
+Retries
+
+↓
+
+Monitoring
+
+↓
+
+Scalable
 
 ---
 
 # Email
 
-Future
-
 Resend
 
-Purpose
+Alternative
 
-Authentication emails.
+SMTP
 
-Notifications.
+Reason
 
-Marketing emails.
+Excellent API
 
-Transactional communication.
+↓
+
+Reliable
+
+↓
+
+Developer Friendly
 
 ---
 
 # Notifications
 
-Future
-
 Firebase Cloud Messaging
 
-Purpose
+Reason
 
-Mobile notifications.
+Android
 
-Journey reminders.
+↓
 
-Business alerts.
+Web Push
 
-Emergency notifications.
+↓
 
----
+Reliable
 
-# Analytics
+↓
 
-Future
-
-Google Analytics
-
-Microsoft Clarity
-
-Custom analytics
-
-Purpose
-
-Understand user behavior.
-
-Improve UX.
-
-Business intelligence.
+Free Tier
 
 ---
 
-# Error Monitoring
+# Payments
+
+Stripe
+
+India Alternative
+
+Razorpay
 
 Future
+
+PayPal
+
+↓
+
+Apple Pay
+
+↓
+
+Google Pay
+
+---
+
+# AI Providers
+
+Primary
+
+OpenAI
+
+Secondary
+
+Gemini
+
+Third
+
+Anthropic
+
+Future
+
+Local LLM
+
+Selection Logic
+
+Best Model
+
+↓
+
+Lowest Cost
+
+↓
+
+Lowest Latency
+
+↓
+
+Task Specific
+
+---
+
+# AI SDK
+
+Vercel AI SDK
+
+Reason
+
+Streaming
+
+↓
+
+Provider Agnostic
+
+↓
+
+Excellent React Integration
+
+↓
+
+Future Proof
+
+---
+
+# Monitoring
+
+Prometheus
+
+↓
+
+Grafana
+
+↓
+
+Loki
+
+↓
+
+Tempo
+
+↓
+
+Alertmanager
+
+Reason
+
+Complete Observability
+
+↓
+
+Open Source
+
+↓
+
+Industry Standard
+
+---
+
+# Error Tracking
 
 Sentry
 
-Purpose
+Reason
 
-Crash reporting.
+Crash Reports
 
-Performance monitoring.
+↓
 
-Production diagnostics.
+Performance
+
+↓
+
+Replay
+
+↓
+
+Alerts
+
+↓
+
+Excellent Integrations
 
 ---
 
 # Logging
 
-Future
-
-Structured logging.
-
-Environment-aware logging.
-
-Centralized monitoring.
-
-No sensitive data should be logged.
-
----
-
-# Search
-
-Future
-
-MongoDB Atlas Search
-
-Potential Future
-
-Elasticsearch
-
-Decision
-
-Only migrate if advanced search capabilities require it.
-
----
-
-# Deployment
-
-Hosting
-
-Vercel
+Pino
 
 Reason
 
-Excellent Next.js support.
+Fast
 
-Global CDN.
+↓
 
-Simple deployment.
+Structured
 
-Automatic previews.
+↓
 
-Fast rollbacks.
+JSON
+
+↓
+
+NestJS Support
+
+↓
+
+Production Ready
+
+---
+
+# Feature Flags
+
+Flagsmith
+
+Alternative
+
+OpenFeature
+
+Reason
+
+Remote Configuration
+
+↓
+
+Gradual Rollout
+
+↓
+
+A/B Testing
+
+↓
+
+Open Source
+
+---
+
+# Containerization
+
+Docker
+
+Reason
+
+Consistency
+
+↓
+
+Easy Deployment
+
+↓
+
+Local Development
+
+↓
+
+Cloud Ready
+
+↓
+
+Industry Standard
+
+---
+
+# Reverse Proxy
+
+NGINX
+
+Reason
+
+Performance
+
+↓
+
+SSL
+
+↓
+
+Compression
+
+↓
+
+Caching
+
+↓
+
+Routing
+
+↓
+
+Load Balancing
+
+---
+
+# CDN
+
+Cloudflare
+
+Reason
+
+Global Network
+
+↓
+
+Security
+
+↓
+
+Caching
+
+↓
+
+DNS
+
+↓
+
+Free Tier
+
+↓
+
+DDoS Protection
 
 ---
 
@@ -629,57 +1045,145 @@ Git
 
 GitHub
 
-Branch Strategy
+Reason
 
-main
+Industry Standard
 
-Production-ready code.
+↓
 
-Future
+Actions
 
-develop
+↓
 
-feature/*
+Pull Requests
 
-release/*
+↓
 
-hotfix/*
+Issues
+
+↓
+
+Projects
+
+↓
+
+Community
 
 ---
 
-# Development Environment
+# CI/CD
 
-IDE
+GitHub Actions
 
-Visual Studio Code
+Reason
 
-Operating System
+Free
 
-Windows
+↓
 
-Supported Platforms
+Powerful
 
-Windows
+↓
 
-macOS
+Integrated
 
-Linux
+↓
+
+Easy Automation
+
+↓
+
+Docker Support
 
 ---
 
 # Package Manager
 
-Current
-
-npm
-
-Future Review
-
 pnpm
 
-Decision
+Reason
 
-Migration only if significant benefits are demonstrated.
+Fast
+
+↓
+
+Efficient
+
+↓
+
+Monorepo
+
+↓
+
+Disk Saving
+
+↓
+
+Excellent Performance
+
+---
+
+# Monorepo Tool
+
+TurboRepo
+
+Reason
+
+Caching
+
+↓
+
+Shared Packages
+
+↓
+
+Fast Builds
+
+↓
+
+Scalable
+
+↓
+
+Excellent DX
+
+---
+
+# Testing
+
+Unit
+
+Vitest
+
+↓
+
+Integration
+
+Supertest
+
+↓
+
+Component
+
+Testing Library
+
+↓
+
+E2E
+
+Playwright
+
+↓
+
+Performance
+
+k6
+
+↓
+
+Accessibility
+
+axe-core
 
 ---
 
@@ -687,43 +1191,25 @@ Migration only if significant benefits are demonstrated.
 
 ESLint
 
+↓
+
 Prettier
 
-Future
+↓
 
 Husky
 
+↓
+
 lint-staged
+
+↓
 
 Commitlint
 
-Purpose
+↓
 
-Maintain consistent code quality.
-
----
-
-# Testing Strategy
-
-Unit Testing
-
-Vitest
-
-Component Testing
-
-React Testing Library
-
-End-to-End
-
-Playwright
-
-Future
-
-Performance testing.
-
-Accessibility testing.
-
-Load testing.
+Conventional Commits
 
 ---
 
@@ -731,176 +1217,278 @@ Load testing.
 
 Markdown
 
-GitHub
+↓
 
-Architecture-first approach.
-
-Documentation always precedes implementation.
-
----
-
-# CI/CD
-
-Future
-
-GitHub Actions
-
-Pipeline
-
-Lint
+Mermaid
 
 ↓
 
-Type Check
+Storybook
 
 ↓
 
-Tests
+OpenAPI
 
 ↓
 
-Build
+Architecture Decision Records
+
+---
+
+# Security
+
+Helmet
 
 ↓
 
-Deploy
+Rate Limiting
 
 ↓
 
-Production
+OWASP
+
+↓
+
+Dependabot
+
+↓
+
+CodeQL
+
+↓
+
+Secret Scanning
+
+↓
+
+Container Scanning
 
 ---
 
-# Environment Configuration
+# Development Tools
 
-Separate environments.
+VS Code
 
-Development
+↓
 
-Testing
+Docker Desktop
 
-Staging
+↓
 
-Production
+Postman
 
-Secrets must never be committed.
+↓
 
-Environment variables must be documented.
+Bruno
 
----
+↓
 
-# Security Principles
+DBeaver
 
-HTTPS everywhere.
+↓
 
-OAuth authentication.
+GitHub Desktop
 
-Input validation.
+↓
 
-Output sanitization.
-
-Rate limiting.
-
-Secure headers.
-
-Least privilege.
-
-No secrets in source control.
+TablePlus (Optional)
 
 ---
 
-# Performance Goals
+# Recommended Hosting
 
-First Contentful Paint under 2 seconds.
+Phase 1
 
-Largest Contentful Paint under 2.5 seconds.
+Hetzner VPS
 
-Lighthouse score above 95.
+↓
 
-Accessibility score above 95.
+Docker Compose
 
-SEO score above 95.
-
-Bundle optimization.
-
-Lazy loading.
-
-Image optimization.
-
-Caching strategy.
-
----
-
-# Scalability Strategy
-
-Design for millions of users.
-
-Horizontal scaling.
-
-Stateless services.
-
-CDN-first delivery.
-
-Caching.
-
-Database indexing.
-
-Background jobs.
-
-Microservices only when justified.
-
----
-
-# Technology Review Policy
-
-Technology choices should remain stable.
-
-Replacement should occur only when one of the following conditions is met:
-
-- Security concerns.
-- End of support.
-- Significant performance improvement.
-- Major productivity gains.
-- Strong business justification.
-
-Technology changes should never be based solely on trends.
-
----
-
-# Future Technology Evaluation
-
-Potential future technologies:
-
-Redis
-
-Kafka
-
-Docker
-
-Kubernetes
-
-Terraform
+↓
 
 Cloudflare
 
-Supabase (evaluation only)
+↓
 
-Vector databases
+GitHub Actions
 
-AI orchestration frameworks
+↓
 
-These technologies should only be adopted after a documented architectural review.
+MinIO
+
+↓
+
+PostgreSQL
+
+↓
+
+Redis
+
+Estimated Monthly Cost
+
+₹3,000–₹6,000
 
 ---
 
-# Final Statement
+Phase 2
 
-The technology stack of Plan My Stop has been selected to prioritize long-term success over short-term convenience.
+Multiple VPS
 
-Every technology serves a specific purpose within the architecture and should contribute to building a scalable, secure, maintainable, and world-class software platform.
+↓
 
-Future changes must preserve these principles and be documented before implementation.
+Separate Database
+
+↓
+
+Load Balancer
+
+↓
+
+CDN
+
+↓
+
+Object Storage
+
+↓
+
+Background Workers
+
+Estimated Monthly Cost
+
+₹15,000–₹30,000
 
 ---
 
-END OF DOCUMENT
+Phase 3
+
+Kubernetes
+
+↓
+
+Multi Region
+
+↓
+
+Auto Scaling
+
+↓
+
+Managed Database
+
+↓
+
+Managed Redis
+
+↓
+
+Global CDN
+
+↓
+
+AI Gateway Cluster
+
+Estimated Monthly Cost
+
+Traffic Dependent
+
+---
+
+# Technology Selection Rules
+
+Never choose
+
+technology
+
+because
+
+it is popular.
+
+Choose technology
+
+because
+
+it solves
+
+our problem.
+
+Replace technology
+
+only
+
+when
+
+there is
+
+measurable benefit.
+
+Avoid
+
+rewriting
+
+the application
+
+for trends.
+
+---
+
+# Tech Stack Summary
+
+The selected technology stack
+
+prioritizes
+
+Developer Productivity
+
+↓
+
+User Experience
+
+↓
+
+Artificial Intelligence
+
+↓
+
+Scalability
+
+↓
+
+Cost Efficiency
+
+↓
+
+Maintainability
+
+↓
+
+Open Standards
+
+↓
+
+Future Growth
+
+This stack
+
+supports
+
+the vision
+
+of building
+
+Plan My Stop
+
+into
+
+an AI-powered
+
+Travel Operating System.
+
+Status
+
+Version 1.0
+
+Approved
+
+Ready For Development.
